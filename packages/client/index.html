@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小滴课堂低代码平台</title>
+  <link href="https://58xueke.com/favicon.ico" rel="shortcut icon"></head>
+  <body><iframe id="bdy-iframe" src="https://58xueke.com/" style="z-index: 997;height: 630px !important;width: 100vw!important;border: none;position:relative !important;"></iframe>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  <style>
+    body {
+        overflow: hidden;
+        margin: 0;
+    }
+
+    .bdy_body {
+        height: 100vh;
+        width: 100vw;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #666;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: 999;
+    }
+
+    .bdy_a {
+        color: #eaf5fe;
+        text-decoration: none;
+        outline: 0;
+        position: relative;
+        z-index: 98;
+        display: inline-block;
+        width: 145px;
+        height: 40px;
+        cursor: pointer;
+        margin: 30px 0 0 30px;
+        background: url(https://58xueke.com/wp-content/uploads/2023/05/1685200496-79b93c9bb24bb9c.png) no-repeat center center;
+        background-size: 145px auto;
+    }
+
+    .bdy_aside {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 97;
+        width: 455px;
+        height: 100vh;
+        display: block;
+        background: rgba(255, 255, 255, .4);
+        backdrop-filter: blur(10px);
+    }
+
+    .bdy_aside_div {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        overflow: hidden;
+        width: 305px;
+        height: 400px;
+    }
+
+    .bdy_aside_div_username {
+        overflow: hidden;
+        width: 100%;
+        height: 97px;
+    }
+
+    .bdy-avatar {
+        background-image: url('https://58xueke.com/logo12');
+        background-size: 100% 100%;
+        float: left;
+        overflow: hidden;
+        width: 97px;
+        height: 97px;
+        border-radius: 97PX;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .bdy-username {
+        float: left;
+        overflow: hidden;
+        box-sizing: border-box;
+        padding-left: 12px;
+        width: calc(100% - 97px);
+        font-size: 12px;
+        line-height: 1.5;
+        color: #666;
+    }
+
+    .bdy-username > .bdy-user {
+        width: 100%;
+        margin-top: 10px;
+        font-weight: 700;
+        font-size: 24px;
+        height: 18px;
+        line-height: 18px;
+        color: #000;
+        padding: 0;
+        display: block;
+    }
+
+    .bdy-author-desc {
+        width: 100%;
+        margin-top: 15px;
+        font-size: 16px;
+        height: 20px;
+        line-height: 20px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: block;
+        padding: 0;
+    }
+
+    .bdy-verify-btn {
+        margin-top: 10px;
+        display: block;
+    }
+
+    .bdy-verify-friend {
+        background: url('data:image/png;base64,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') no-repeat left center;
+        background-size: 20px 20px;
+        color: #2a9cec;
+        box-sizing: border-box;
+        margin: 8px 0 0;
+        padding: 0 0 0 24px;
+        width: 100%;
+        height: 20px;
+        line-height: 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #bdy-input {
+        background: rgba(255, 255, 255, .15);
+        margin: 50px 0 29px;
+        padding-left: 40px;
+        box-sizing: border-box;
+        width: 288px;
+        height: 54px;
+        border: 2px solid rgba(0, 0, 0, .05);
+        border-radius: 28px;
+        font-size: 16px;
+        text-align: left;
+        line-height: 1.5;
+        font-family: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+
+    }
+
+    #bdy-input:focus {
+        outline: 0;
+        border: 2px solid #5D98FF;
+    }
+
+    #bdy-submitBtn {
+        width: 288px;
+        height: 54px;
+        line-height: 54px;
+        text-align: center;
+        border-radius: 28px;
+        font-weight: 700;
+        font-size: 18px;
+        cursor: pointer;
+        border: 1px solid rgba(0, 0, 0, .05);
+        color: #fff;
+        background: #0095FF;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+<!-- 这里的内容, 要不能对其他地方做出改变 -->
+<bdy-div class="bdy_body">
+    <!-- 图标 -->
+    <a class="bdy_a" href="https://58xueke.com" target="_blank">1</a>
+
+    <!-- 输入框 -->
+    <bdy-div class="bdy_aside">
+        <bdy-div class="bdy_aside_div">
+            <bdy-div class="bdy_aside_div_username">
+                <!-- 头像 -->
+                <bdy-div class="bdy-avatar"></bdy-div>
+                <bdy-div class="bdy-username">
+                    <bdy-div class="bdy-user">全网最牛资源站</bdy-div>
+                    <bdy-div class="bdy-author-desc">百万资源 立即学习</bdy-div>
+                    <bdy-div class="bdy-verify-btn">
+                        <a class="bdy-verify-friend" href="https://58xueke.com" target="_blank" style="text-decoration:none">认准 58xueke.com</a>
+                    </bdy-div>
+                </bdy-div>
+            </bdy-div>
+            <input id="bdy-input" tabindex="1" type="text" maxlength="20" placeholder="请输入提取码，不区分大小写">
+            <div id="bdy-submitBtn" onclick="submit_click()">提取文件</div>
+        </bdy-div>
+    </bdy-div>
+</bdy-div>
+
+<video id="video" poster="" loop="loop" preload style="position: absolute;z-index: 998;left: 50%;top: 50%;transform: translate(-50%,-50%);width: 100%;display: inline-block;vertical-align: baseline;margin: 0;border: 0;outline: 0;padding: 0;background-color: #DCEFFE">
+    <source src=" https://58xueke.com/html12" type="video/mp4" />
+</video>
+<script>
+    window.time_i = setInterval(()=>{document.querySelector('#video').play();}, 100);
+</script>
+<script>
+    let submit_click = function submit_click() {
+        if(document.querySelector("#bdy-input").value.trim() === "58xueke.com"){
+            // 不显示 bdy 提取码界面
+            document.querySelector(".bdy_body").style.display = "none";
+            // 放开body overflow 属性
+            document.querySelector("body").style.overflow = "auto";
+            // 绘制水印
+            __canvasWM();
+            // 停止视频
+            clearInterval(window.time_i);
+            document.querySelector('#video').pause();
+            document.querySelector('#video').style.display='none';
+        }
+        else{
+            alert('密码错误');
+            setTimeout(function () {document.location.href = "https://58xueke.com"}, 1500);
+        }
+    }
+    document.querySelector("#bdy-input").addEventListener("keydown", e => {if (e.keyCode === 13) return submit_click(), !1;});
+</script>
+<script>
+    function __canvasWM(
+        {width = '600', height = '300', textAlign = 'center', textBaseline = 'middle', fillStyle = 'rgba(10,10,10,0.19)', content = '58xueke.com', rotate = '20', font_size=22,
+        } = {}) {
+        const canvas = document.createElement('canvas');
+        canvas.setAttribute('width', width);
+        canvas.setAttribute('height', height);
+        const ctx = canvas.getContext("2d");
+        ctx.textAlign = textAlign;
+        ctx.textBaseline = textBaseline;
+        ctx.font = `${font_size}px Microsoft Yahei`;
+        ctx.fillStyle = fillStyle;
+        ctx.rotate(Math.PI / 180 * rotate);
+        ctx.fillText(content, parseFloat(width) / 2, parseFloat(height) / 2);
+
+        // 插入的节点 .__wm
+        const __wm = document.querySelector('.__wm');
+        const watermarkDiv = __wm || document.createElement("div");
+        watermarkDiv.setAttribute('style', `position:fixed;top:0;left:0;bottom:0;right:0;width:100%;height:100%;z-index:500;pointer-events:none;background-repeat:repeat;background-image:url('${canvas.toDataURL()}')`);
+        watermarkDiv.classList.add('__wm');
+
+        if (!__wm) {}
+        document.body.insertBefore(watermarkDiv, document.body.firstChild)
+        window.__canvasWM = __canvasWM;
+    }
+</script>
+</body>
+</html>
